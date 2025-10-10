@@ -1,0 +1,21 @@
+﻿---
+- name: Update RHEL 9 servers
+  hosts: NJC-MGMT-P02.corp.goya.com
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Perform a full system update using dnf
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+        update_cache: yes
+      register: dnf_update_results
+
+    - name: Display update results
+      ansible.builtin.debug:
+        var: dnf_update_results
+
+    - name: Reboot if required by the update
+      ansible.builtin.reboot:
+      when: dnf_update_results.reboot_required is defined and dnf_update_results.reboot_required
