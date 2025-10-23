@@ -1,6 +1,6 @@
 ﻿---
 - name: Update RHEL 9 servers
-  hosts: NJC-MGMT-SOC.corp.goya.com
+  hosts: 10.12.50.157
   become: true
   gather_facts: true
 
