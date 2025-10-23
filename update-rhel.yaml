@@ -1,6 +1,6 @@
 ﻿---
 - name: Update RHEL 9 servers
-  hosts: 10.12.50.157
+  hosts: all
   become: true
   become_user: ansibleusr
   gather_facts: true
